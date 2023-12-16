@@ -5,7 +5,7 @@
 using namespace std;
 
 
-stats bubble_sort(std::vector<int>& vec) {
+stats bubble_sort(vector<int>& vec) {
 	stats stats;
 
 	size_t length = vec.size();
