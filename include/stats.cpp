@@ -1,0 +1,16 @@
+using namespace std;
+
+
+struct stats {
+	size_t comp_count = 0;
+	size_t copy_count = 0;
+
+	friend stats operator+(const stats& left, const stats& right)
+	{
+		stats stats;
+		stats.comp_count = left.comp_count + right.comp_count;
+		stats.copy_count = left.copy_count + right.copy_count;
+		return stats;
+	}
+};
+
