@@ -19,7 +19,7 @@ endif()
 
 
 # Объявляем библиотеку
-add_library(Sorts-v1 SHARED "include/bubble_sort.cpp" "include/comb_sort.cpp" "include/shell_sort")
+add_library(Sorts-v1 SHARED "include/bubble_sort.cpp" "include/comb_sort.cpp" "include/shell_sort" "include/generates.cpp")
 target_include_directories(Sorts-v1 PUBLIC "include")
 
 add_executable(Sorts-v1-main  "app/main.cpp" )
