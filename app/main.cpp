@@ -4,7 +4,7 @@
 #include <sorts.cpp>
 
 
-#define SIZE 1000;
+#define SIZE 1000
 
 using namespace std;
 
@@ -27,4 +27,85 @@ int main() {
 	cout << endl;
 	for (int i = 0; i < arr2.size(); ++i) cout << arr2[i] << " ";
 	cout << endl;
+
+
+	//Сортировка пузырьком для 100 случайных, 1 отсортированного и 1 инвертированного векторов
+	{
+		cout << "Bubble sort tests" << endl << endl;
+		size_t sum_comparison = 0, sum_copy = 0;
+		for (int i = 0; i < 100; ++i) {
+			vector<int> arr = generate_random(SIZE);
+			stats tmp = bubble_sort(arr);
+			sum_comparison += tmp.comp_count;
+			sum_copy += tmp.copy_count;
+		}
+		cout << "size: " << SIZE << endl;
+		cout << "Average comparison quantity: " << sum_comparison / 100 << endl;
+		cout << "Average copy quantity: " << sum_copy / 100 << endl;
+
+		vector<int> sorted = generate_sorted(SIZE);
+		stats sorted_stats = bubble_sort(sorted);
+		cout << "size: " << SIZE << endl;
+		cout << "comparison quantity for sorted vector: " << sorted_stats.comp_count << endl;
+		cout << "copy quantity for sorted vector: " << sorted_stats.copy_count << endl;
+
+		vector<int> inverted = generate_inverted(SIZE);
+		stats inverted_stats = bubble_sort(inverted);
+		cout << "size: " << SIZE << endl;
+		cout << "comparison quantity for inverted vector: " << inverted_stats.comp_count << endl;
+		cout << "copy quantity for inverted vector: " << inverted_stats.copy_count << endl << endl;
+	}
+	//Сортировка расческой для 100 случайных, 1 отсортированного и 1 инвертированного
+	{
+		cout << "Comb sort tests" << endl << endl;
+		size_t sum_comparison = 0, sum_copy = 0;
+		for (int i = 0; i < 100; ++i) {
+			vector<int> arr = generate_random(SIZE);
+			stats tmp = comb_sort(arr);
+			sum_comparison += tmp.comp_count;
+			sum_copy += tmp.copy_count;
+		}
+		cout << "size: " << SIZE << endl;
+		cout << "Average comparison quantity: " << sum_comparison / 100 << endl;
+		cout << "Average copy quantity: " << sum_copy / 100 << endl;
+
+		vector<int> sorted = generate_sorted(SIZE);
+		stats sorted_stats = comb_sort(sorted);
+		cout << "size: " << SIZE << endl;
+		cout << "comparison quantity for sorted vector: " << sorted_stats.comp_count << endl;
+		cout << "copy quantity for sorted vector: " << sorted_stats.copy_count << endl;
+
+		vector<int> inverted = generate_inverted(SIZE);
+		stats inverted_stats = comb_sort(inverted);
+		cout << "size: " << SIZE << endl;
+		cout << "comparison quantity for inverted vector: " << inverted_stats.comp_count << endl;
+		cout << "copy quantity for inverted vector: " << inverted_stats.copy_count << endl << endl;
+	}
+	// Шейкерная сортировка для 100 случайных, 1 отсортированного и 1 инвертированного
+	{
+		cout << "Shake sort tests" << endl << endl;
+		size_t sum_comparison = 0, sum_copy = 0;
+		for (int i = 0; i < 100; ++i) {
+			vector<int> arr = generate_random(SIZE);
+			stats tmp = shake_sort(arr);
+			sum_comparison += tmp.comp_count;
+			sum_copy += tmp.copy_count;
+		}
+		cout << "size: " << SIZE << endl;
+		cout << "Average comparison quantity: " << sum_comparison / 100 << endl;
+		cout << "Average copy quantity: " << sum_copy / 100 << endl;
+
+		vector<int> sorted = generate_sorted(SIZE);
+		stats sorted_stats = shake_sort(sorted);
+		cout << "size: " << SIZE << endl;
+		cout << "comparison quantity for sorted vector: " << sorted_stats.comp_count << endl;
+		cout << "copy quantity for sorted vector: " << sorted_stats.copy_count << endl;
+
+		vector<int> inverted = generate_inverted(SIZE);
+		stats inverted_stats = shake_sort(inverted);
+		cout << "size: " << SIZE << endl;
+		cout << "comparison quantity for inverted vector: " << inverted_stats.comp_count << endl;
+		cout << "copy quantity for inverted vector: " << inverted_stats.copy_count << endl;
+	}
+	
 }
