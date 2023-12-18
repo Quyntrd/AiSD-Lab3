@@ -14,6 +14,9 @@ int main() {
 	vector<int> arr = { 1, 3, 5, 2, 20, 9, 10, 43, 4, 7 , 11};
 	vector<int> arr1 = { 1, 3, 5, 2, 20, 9, 10, 43, 4, 7 , 11};
 	vector<int> arr2 = { 1, 3, 5, 2, 20, 9, 10, 43, 4, 7 , 11};
+	vector<int> arr3 = { 1, 3, 5, 2, 20, 9, 10, 43, 4, 7 , 11 };
+	vector<int> arr4 = { 1, 3, 5, 2, 20, 9, 10, 43, 4, 7 , 11 };
+	vector<int> arr5 = { 1, 3, 5, 2, 20, 9, 10, 43, 4, 7 , 11 };
 	//ѕроверка работоспособности сортировок
 	stat1 = bubble_sort(arr);
 	cout << "comp count " << stat1.comp_count << " copy count " << stat1.copy_count << endl;
@@ -26,6 +29,19 @@ int main() {
 	for (int i = 0; i < arr1.size(); ++i) cout << arr1[i] << " ";
 	cout << endl;
 	for (int i = 0; i < arr2.size(); ++i) cout << arr2[i] << " ";
+	cout << endl;
+
+	stats stat12 = bubble_sort_it(arr3.begin(), arr3.end());
+	cout << "comp count " << stat12.comp_count << " copy count " << stat12.copy_count << endl;
+	stat1 = shake_sort_it(arr4.begin(), arr4.end());
+	cout << "comp count " << stat1.comp_count << " copy count " << stat1.copy_count << endl;
+	stat1 = comb_sort_it(arr5.begin(), arr5.end());
+	cout << "comp count " << stat1.comp_count << " copy count " << stat1.copy_count << endl;
+	for (int i = 0; i < arr3.size(); ++i) cout << arr3[i] << " ";
+	cout << endl;
+	for (int i = 0; i < arr4.size(); ++i) cout << arr4[i] << " ";
+	cout << endl;
+	for (int i = 0; i < arr5.size(); ++i) cout << arr5[i] << " ";
 	cout << endl;
 
 

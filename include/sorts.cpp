@@ -26,7 +26,7 @@ stats bubble_sort(vector<int>& vec) {
 	stats stat;
 
 	size_t length = vec.size();
-	for (size_t i = 0; i < length - i - 1; ++i) {
+	for (size_t i = 0; i < length; ++i) {
 		for (size_t j = 0; j < length - i - 1; ++j) {
 			if (vec[j] > vec[j + 1]) {
 				swap(vec[j + 1], vec[j]);
@@ -42,14 +42,16 @@ stats bubble_sort(vector<int>& vec) {
 template<class Iterator>
 stats bubble_sort_it(Iterator begin, Iterator end) {
 	stats stat;
-	for (Iterator i = begin; i != end; ++i) {
-		for (Iterator j = begin; j < i; ++j) {
-			if (*i < *j) {
-				iter_swap(i, j);
+	int i1 = 0;
+	for (auto i = begin; i != end; ++i) {
+		for (auto j = begin; j != end - i1 - 1; ++j) {
+			if (*j > *(j+1)) {
+				iter_swap(j+1, j);
 				stat.copy_count += 1;
 			}
-			stat.copy_count += 1;
+			stat.comp_count += 1;
 		}
+		++i1;
 	}
 	return stat;
 }
@@ -100,7 +102,7 @@ stats shake_sort_it(Iterator begin, Iterator end) {
 		--right;
 		for (auto i = right; i > left; --i) {
 			stat.comp_count += 1;
-			if (*(i - 1) > i) {
+			if (*(i - 1) > *i) {
 				iter_swap(i - 1, i);
 				flag = 1;
 				stat.copy_count += 1;
