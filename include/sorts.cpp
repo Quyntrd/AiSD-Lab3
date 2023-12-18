@@ -88,14 +88,11 @@ template<typename Iterator>
 stats shake_sort_it(Iterator begin, Iterator end) {
 	stats stat;
 	auto left = begin, right = end - 1;
-	int flag = 1;
-	while (left < right && flag > 0) {
-		flag = 0;
+	while (left <= right) {
 		for (auto i = left; i != right; ++i) {
 			stat.comp_count += 1;
 			if (*i > *(i + 1)) {
 				iter_swap(i, i + 1);
-				flag = 1;
 				stat.copy_count += 1;
 			}
 		}
@@ -104,7 +101,6 @@ stats shake_sort_it(Iterator begin, Iterator end) {
 			stat.comp_count += 1;
 			if (*(i - 1) > *i) {
 				iter_swap(i - 1, i);
-				flag = 1;
 				stat.copy_count += 1;
 			}
 		}
