@@ -88,11 +88,14 @@ template<typename Iterator>
 stats shake_sort_it(Iterator begin, Iterator end) {
 	stats stat;
 	auto left = begin, right = end - 1;
-	while (left <= right) {
+	int flag = 1;
+	while (left < right && flag > 0) {
+		flag = 0;
 		for (auto i = left; i != right; ++i) {
 			stat.comp_count += 1;
 			if (*i > *(i + 1)) {
 				iter_swap(i, i + 1);
+				flag = 1;
 				stat.copy_count += 1;
 			}
 		}
@@ -101,6 +104,7 @@ stats shake_sort_it(Iterator begin, Iterator end) {
 			stat.comp_count += 1;
 			if (*(i - 1) > *i) {
 				iter_swap(i - 1, i);
+				flag = 1;
 				stat.copy_count += 1;
 			}
 		}
@@ -163,8 +167,9 @@ vector<int> generate_inverted(const int size) {
 	for (int i = size - 1; i >= 0; --i) result.push_back(i);
 	return result;
 }
-vector<int> generate_random(const int size) {
+vector<int> generate_random(const int size, int seed) {
 	vector<int> result;
+	srand(seed);
 	for (int i = 0; i < size; ++i) result.push_back(rand() % size);
 	return result;
 }
